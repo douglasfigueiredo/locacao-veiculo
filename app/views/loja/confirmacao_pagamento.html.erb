@@ -1,0 +1,48 @@
+<form action="/confirmar_pagamento" method="POST" >
+  <div class="col col-sm-12">
+    <h1 style="width: 100%; text-align:center;">CONFIRMACÃO</h1>
+    <hr>
+    <br>
+    <div class="col col-sm-8">
+      <div class="card mb-3" style="background-color: #fbfbfb;">
+        <div class="row no-gutters">
+          <div class="col-md-8" style="display: flex;justify-content: center;align-items: center; padding:20px;">
+            <img src="https://www.chevrolet.com.br/content/dam/chevrolet/mercosur/brazil/portuguese/index/cars/cars-subcontent/04-images/novo-onix-branco-summit.png" alt="..." style="width:100%;">
+          </div>
+          <div class="col-md-4" style="display: flex;justify-content: center;align-items: center; padding:20px;">
+            <div class="card-body">
+              <h3 class="card-title"><b><%= @reserva.veiculo.marca.nome %> <%= @reserva.veiculo.nome %></b></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tabela fechar aluguel -->
+    <div class="col col-sm-4">
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="card-body" style="padding:40px;display: flex;flex-direction: column;justify-content: space-evenly;">
+            <div style="display: flex;flex-direction: column;align-items: center;">
+              <h3><b><%= @reserva.veiculo.marca.nome %> <%= @reserva.veiculo.nome %></b></h3>
+              <hr>
+              <div class="form-group" style="width:100%; margin: 40px 0;">
+                <div class="row" style="width: 100%;display: flex;justify-content: space-between;">
+                  <label for="exampleFormControlSelect1">De:</label>
+                  <label for="exampleFormControlSelect1">Até:</label>
+                </div>
+                <div class="row" style="width: 100%;display: flex;justify-content: space-between;">
+                  <p id="de"><%= @reserva.reservado_de.strftime("%d/%m/%Y") %></p>
+                  <p id="ate"><%= @reserva.reservado_ate.strftime("%d/%m/%Y") %></p>
+                </div>
+                <div class="form-group" style="text-align:center;">
+                  <h4 class="card-title"><b>Valor Total</b></h4>
+                  <h4 id="valorTotal"><%= number_to_currency(@reserva.valor_alugado) %></h4>
+                </div>
+                <input class="btn btn-success" style="width:100%; margin-top: 40px;" type="submit" value="Confirmar">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
